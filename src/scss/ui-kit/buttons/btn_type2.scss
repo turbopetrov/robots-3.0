@@ -1,0 +1,19 @@
+.btn_type2_normal {
+  width: 200px;
+  color: $blue;
+  background: transparent;
+  border-color: $blue-grad;
+  transition: all 0.2s;
+  &:hover {
+    color: $dark;
+    background-color: $blue;
+    border-color: $blue;
+    box-shadow: 0px 6px 30px -8px $blue;
+  }
+}
+.btn_type2_disable {
+  color: $light-grey-color;
+  background: $grey-color;
+  border-color: $grey-color;
+  cursor: not-allowed;
+}

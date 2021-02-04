@@ -1,0 +1,10 @@
+mixin parts(svg__id, parts__disable="")
+    label.parts
+            input.js-checkBox.parts__checkbox(type="checkbox" disabled)
+            span.js-fakeCheckBox.parts__fake-checkbox(class= parts__disable)
+                include ./parts__img.pug
+                +robo-part(svg__id)
+                
+
+   
+    
