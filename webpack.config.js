@@ -3,6 +3,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const {VueLoaderPlugin} = require('vue-loader');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
@@ -25,15 +26,25 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options:{
+          loader:{
+            scss: 'vue-style-loader!css-loader!sass-loader'
+          }
+        }
+      },
+      {
         test: /\.pug$/,
-        loaders: [
-          {
-            loader: 'pug-loader',
-            options: {
-              pretty: true,
-            },
-          },
-        ],
+        oneOf: [
+           {
+              resourceQuery: /^\?vue/,
+              use: ['pug-plain-loader']
+           },
+           {
+              use: ['raw-loader', 'pug-plain-loader']
+           }
+        ]
       },
       {
         test: /\.js$/,
@@ -65,11 +76,12 @@ module.exports = {
     ],
   },
   plugins: [
+    new VueLoaderPlugin(),
     // new ESLintPlugin(),
     new HtmlWebpackPlugin(
       {
         filename: 'index.html',
-        template: './pug/pages/index.pug',
+        template: './pug/index.pug',
       },
     ),
     new MiniCssExtractPlugin(
