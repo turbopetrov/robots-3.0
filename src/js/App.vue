@@ -1,12 +1,24 @@
 <template lang="pug">
   #app.page
     .container_wide
+      <app__header></app__header>
       .container_slim 
+        <app__title></app__title>
+        wallet
+
 
 </template>
 
 <script>
+import app__header from './components/header.vue';
+import app__title from './components/title-section.vue';
+import wallet from './components/wallet.vue';
 export default {  
+  components:{
+    app__header,
+    app__title,
+    wallet,
+  },
   data() {
     return {
       message: 'Polinka prosto super'

@@ -8,13 +8,9 @@
 @import "./ui-kit/buttons/btn_type3.scss";
 @import "./ui-kit/radio/radio.scss";
 @import "./ui-kit/parts/parts.scss";
+@import "./side-bar.scss";
 
 * {
   margin: 0;
   padding: 0;
-}
-
-@mixin size($width, $height) {
-  width: $width;
-  height: $height;
 }
