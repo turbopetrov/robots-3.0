@@ -4,19 +4,20 @@
 
 .checkbox__text {
   color: $white-color;
+  font: 16px/150%;
   font-weight: 500;
   font-family: Montserrat;
-  font-style: normal;
-  @include text-size(16px, 150%);
+  font-style: normal; 
 }
 
 .checkbox__fake-checkbox {
   position: relative;
   display: inline-block;
+  width: 24px;
+  height: 24px;
   margin-right: 12px;
   border: 1px solid $white-color;
-  transition: 0.2s;
-  @include size(24px, 24px);
+  transition: 0.2s;  
   &:hover {
     border-color: $grey-color;
   }
@@ -31,7 +32,7 @@
   left: 50%;
   width: 14px;
   height: 12px;
-  background-image: url("../img/check.svg");
+  background-image: url("../../img/check.svg");
   transform: translate(-50%, -50%);
   opacity: 0;
   transition: 0.1s;

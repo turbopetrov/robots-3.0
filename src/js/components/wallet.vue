@@ -8,15 +8,15 @@
             Кошелек криптовалют
     .wallet-section__coins-block
         .coins-block__coins                     
-            img.jsCoin.coins-block__coins-item(:src="coinPath", alt="Монетка")                       
-        .paragraph_md.coins-block__coins-quantity
-            span#coinsQuantity.coinsQuantity 1 biorobo монета
+            img.coins-block__coins-item(:src="coinPath", v-for='coin in ballance' alt="Монетка")                       
+        .paragraph_md.coins-block__coins-quantity.
+            {{ballance}} biorobo монета
                      
     .wallet-section__action-block
-        button#getCoinsBtn.action-block__btn.
+        button.action-block__btn(@click="getCoins(getCoinsValue)").
             Нацыганить
-        label.action-block__checkbox-label.checkbox.wallet-section__checkbox 
-            input#coinsCheckbox.checkbox__input(type="checkbox")
+        label.action-block__checkbox-label.checkbox.wallet-section__checkbox
+            input.checkbox__input(type="checkbox", v-model="getCoinsValue", :true-value='5', :false-value="1")
             span.checkbox__fake-checkbox
             span.action-block__checkbox-text.
                 Цыганить по 5 монет
@@ -26,13 +26,26 @@
 export default {
   data(){
     return{
-      coinPath: "../img/coin.png"
+      coinPath: "../img/coin.png",
+      ballance: 5,  
+      getCoinsValue: 1,    
+    }
+  },
+  methods:{
+    getCoins: function(quantity){ 
+      ((this.ballance+quantity)>100)
+        ?alert('test'):this.ballance+=quantity;       
+    },
+    login: function(){
+      console.log(this.checked);
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+@import '../../scss/ui-kit/colors.scss';
+@import "../../scss/ui-kit/checkbox.scss";
   .wallet-section {
     position: relative;
     display: flex;
@@ -53,9 +66,37 @@ export default {
     &:last-child {
       margin-left: 0;
     }
+  } 
+  .coins-block__coins-quantity {
+    margin-top: 43px;
   }
-  
 
+  //----------------- Action Block---------------//
 
-  
+  .action-block__checkbox-label {
+  display: flex;
+}
+.action-block__checkbox-text {
+  color: $white-color;  
+  font: 16px/150% Montserrat;
+  font-weight: 500;
+  font-style: normal;  
+}
+.wallet-section__action-block {
+  display: flex;
+  margin-top: 43px;
+}
+.action-block__btn {
+  margin-right: 23px;
+  padding: 0;
+  color: $orange-color;
+  font: 16px/150% Montserrat; 
+  font-weight: 500;  
+  font-style: normal;
+  background-color: transparent;
+  border: 0px;
+  border-bottom: 1px solid $orange-color;
+  outline: none;
+  cursor: pointer;  
+}  
 </style>
