@@ -28,8 +28,7 @@ export default {
     return{
       coinPath: "../img/coin.png",
       ballance: 1,  
-      getCoinsValue: 1,
-          
+      getCoinsValue: 1,          
     }
   },
   methods:{

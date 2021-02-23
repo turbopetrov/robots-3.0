@@ -1,10 +1,12 @@
 <template lang="pug">
   #app.page
     .container_wide
-      <app__header></app__header>
+      app__header
       .container_slim 
-        <app__title></app__title>
-        wallet
+        app__title
+        app__wallet
+        app__shop
+        app__storage
 
 
 </template>
@@ -12,12 +14,16 @@
 <script>
 import app__header from './components/header.vue';
 import app__title from './components/title-section.vue';
-import wallet from './components/wallet.vue';
+import app__wallet from './components/wallet.vue';
+import app__shop from './components/shop.vue';
+import app__storage from './components/storage.vue';
 export default {  
   components:{
     app__header,
     app__title,
-    wallet,
+    app__wallet,
+    app__shop,
+    app__storage,
   },
   data() {
     return {
