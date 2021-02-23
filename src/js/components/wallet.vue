@@ -10,7 +10,7 @@
         .coins-block__coins                     
             img.coins-block__coins-item(:src="coinPath", v-for='coin in ballance' alt="Монетка")                       
         .paragraph_md.coins-block__coins-quantity.
-            {{ballance}} biorobo монета
+            {{ballance}} biorobo {{message}}
                      
     .wallet-section__action-block
         button.action-block__btn(@click="getCoins(getCoinsValue)").
@@ -27,18 +27,26 @@ export default {
   data(){
     return{
       coinPath: "../img/coin.png",
-      ballance: 5,  
-      getCoinsValue: 1,    
+      ballance: 1,  
+      getCoinsValue: 1,
+          
     }
   },
   methods:{
     getCoins: function(quantity){ 
       ((this.ballance+quantity)>100)
         ?alert('test'):this.ballance+=quantity;       
+    },    
+  },
+  computed:{
+    message: function(){ 
+      const varWords = [' монета',' монеты', ' монет' ];
+      let n = this.ballance;
+      return varWords[
+       (n %= 100, 20 > n && n > 4) ? 2
+         :[2,0,1,1,1,2][ (n %= 10, n < 5) ? n : 5]
+      ]      
     },
-    login: function(){
-      console.log(this.checked);
-    }
   }
 }
 </script>
