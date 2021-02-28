@@ -23,22 +23,22 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
 export default {
   data(){
     return{
-      coinPath: "../img/coin.png",
-      ballance: 1,  
+      coinPath: "../img/coin.png",        
       getCoinsValue: 1,          
     }
   },
   methods:{
-    getCoins: function(quantity){ 
+    getCoins(quantity){ 
       ((this.ballance+quantity)>100)
-        ?alert('test'):this.ballance+=quantity;       
+        ?alert('test'):this.$store.commit('addCoins', quantity);       
     },    
   },
   computed:{
-    message: function(){ 
+    message(){ 
       const varWords = [' монета',' монеты', ' монет' ];
       let n = this.ballance;
       return varWords[
@@ -46,6 +46,7 @@ export default {
          :[2,0,1,1,1,2][ (n %= 10, n < 5) ? n : 5]
       ]      
     },
+    ...mapGetters(['ballance']),
   }
 }
 </script>

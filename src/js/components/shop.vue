@@ -6,40 +6,33 @@
     h2.shop-section__heading.heading_md.
         Рынок комплектующих
     .shop-section__card-block
-      .shop-card(:data-name= 'card.dataName', v-for='card in shopCards')
+      .shop-card(v-for='(card, index) of shopCards' :key ='card.dataName')
         .shop-card__img-container
             img.shop-card__img(:src='card.imagePath', :alt='card.name')
-        h3.shop-card__heading.heading_sm| {{card.name}}    
+        h3.shop-card__heading.heading_sm| {{card.name}}           
         p.shop-card__paragraph.paragraph_sm| Стоимость {{card.cost}} монет        
-        button.btn.btn_type1_disable.shop-card__btn('disabled' = true).
+        button.btn.shop-card__btn(:class ='(card.cost>ballance)?buttonDisable:buttonActive',
+                                  :disabled='card.cost>ballance',
+                                  @click='removeCoins(card.cost)').
             Установить  
 </template>
 
 <script>
+import{mapGetters} from 'vuex';
 export default {
   data(){
     return{
-      shopCards: [
-        {
-          name: 'Биомеханизм',
-          cost: 7,
-          imagePath: '../../img/robotHand.svg',
-          dataName: 'biomech',          
-        },
-        {
-          name: 'Процессор',
-          cost: 5,
-          imagePath: '../../img/processor.svg', 
-          dataName: 'processor',          
-        },
-        {
-          name: 'Душа',
-          cost: 25,
-          imagePath: '../../img/face.svg',
-          dataName: 'soul',           
-        },
-      ]
+      buttonActive: 'btn_type1_normal',
+      buttonDisable: 'btn_type1_disable',
     }
+  },
+  computed: {
+    ...mapGetters(['shopCards', 'ballance']),    
+  },
+  methods:{
+    removeCoins(quantity){
+      this.$store.commit('removeCoins', quantity);      
+    }    
   }
 }
 </script>
