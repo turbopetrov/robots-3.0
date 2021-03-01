@@ -6,14 +6,15 @@
     h2.shop-section__heading.heading_md.
         Рынок комплектующих
     .shop-section__card-block
-      .shop-card(v-for='(card, index) of shopCards' :key ='card.dataName')
+      .shop-card(v-for='(card) of shopCards' :key ='card.dataName')
         .shop-card__img-container
-            img.shop-card__img(:src='card.imagePath', :alt='card.name')
+            img.shop-card__img(:src='card.imagePath',
+                               :alt='card.name')
         h3.shop-card__heading.heading_sm| {{card.name}}           
         p.shop-card__paragraph.paragraph_sm| Стоимость {{card.cost}} монет        
         button.btn.shop-card__btn(:class ='(card.cost>ballance)?buttonDisable:buttonActive',
                                   :disabled='card.cost>ballance',
-                                  @click='removeCoins(card.cost)').
+                                  @click='buyPart(card.cost, card.partType)').
             Установить  
 </template>
 
@@ -27,11 +28,12 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['shopCards', 'ballance']),    
+    ...mapGetters(['ballance', 'shopCards', 'storageCards']),    
   },
   methods:{
-    removeCoins(quantity){
-      this.$store.commit('removeCoins', quantity);      
+    buyPart(quantity, type){
+      this.$store.commit('removeCoins', quantity);
+      this.$store.commit('addPart', type);           
     }    
   }
 }

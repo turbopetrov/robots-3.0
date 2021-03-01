@@ -6,41 +6,41 @@
     h2.storage-section__heading.heading_md.
         Склад
     .storage-section__card-block
-      .storage-card(:data-name='card.dataName', v-for='card in storageCards')
+      .storage-card(:data-name='card.dataName', v-for='(card, index) in storageCards')
         h3.storage-card__heading.heading_sm.
           {{card.name}}    
         p.storage-card__paragraph.paragraph_sm.
           Стоимость {{card.sellCost}} монет
         h3.storage-card__heading.heading_sm.
           {{card.partValue}} шт                                             
-        button.btn.btn_type2_disable.storage-card__btn('disabled' = true).
+        button.btn.storage-card__btn(:class ='(card.partValue<1)?buttonDisable:buttonActive',
+                                     :disabled='card.partValue<1',
+                                     @click='sellPart(index, card.sellCost)' ).
           Продать
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
 export default {
   data(){
     return{
-      storageCards: [
-        {
-          name: 'Биомеханизм',
-          partValue: 0,
-          sellCost: 5,         
-          dataName: 'biomech',          
-        },
-        {
-          name: 'Процессор',
-          partValue: 0,
-          sellCost: 3,           
-          dataName: 'processor',          
-        },
-        {
-          name: 'Душа',
-          partValue: 0,
-          sellCost: 15,          
-          dataName: 'soul',           
-        },
-      ]
+      buttonActive: 'btn_type2_normal',
+      buttonDisable: 'btn_type2_disable',
+    }
+  },
+
+  computed:{
+    ...mapGetters(['ballance', 'shopCards', 'storageCards'])
+  },
+  methods:{
+    sellPart(index, sellCost){ 
+      if(this.ballance+sellCost>100){
+        alert('test')
+      }else{
+        this.$store.commit('addCoins', sellCost);
+        this.$store.commit('removePart', index);
+      }
+            
     }
   }
 }

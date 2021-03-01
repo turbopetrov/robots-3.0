@@ -32,9 +32,8 @@ export default {
     }
   },
   methods:{
-    getCoins(quantity){ 
-      ((this.ballance+quantity)>100)
-        ?alert('test'):this.$store.commit('addCoins', quantity);       
+    getCoins(quantity){       
+      this.$store.commit('addCoins', quantity);       
     },    
   },
   computed:{
@@ -46,7 +45,7 @@ export default {
          :[2,0,1,1,1,2][ (n %= 10, n < 5) ? n : 5]
       ]      
     },
-    ...mapGetters(['ballance']),
+    ...mapGetters(['ballance', 'shopCards', 'storageCards']),
   }
 }
 </script>
