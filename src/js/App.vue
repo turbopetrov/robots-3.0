@@ -7,6 +7,7 @@
         app__wallet
         app__shop
         app__storage
+        app__factory
 
 
 </template>
@@ -17,6 +18,7 @@ import app__title from './components/title-section.vue';
 import app__wallet from './components/wallet.vue';
 import app__shop from './components/shop.vue';
 import app__storage from './components/storage.vue';
+import app__factory from './components/factory/factory.vue';
 export default {  
   components:{
     app__header,
@@ -24,6 +26,7 @@ export default {
     app__wallet,
     app__shop,
     app__storage,
+    app__factory
   },
   data() {
     return {
