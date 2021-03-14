@@ -4,7 +4,9 @@
   svgSprite  
   .factory-section__parts-container
     label.parts(v-for='(part,index) in 4')
-      input.parts__checkbox(type="checkbox", :disabled='(index>biomechValue-1)?true:false')
+      input.parts__checkbox(type="checkbox" 
+                            :disabled='(index>biomechValue-1)?true:false'
+                            :checked='(index>biomechValue-1)?false:null')     
       span.parts__fake-checkbox(:class='(index>biomechValue-1)?partDisabled:partActive')
         svg.parts__img
           use(xlink:href="#1")
