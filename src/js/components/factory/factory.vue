@@ -10,7 +10,7 @@ section.factory-section
     radioBlock
     partsBlock 
     .factory-section__img-block
-      img.factory-section__robot-img(src="src/img/FrontMale_disable.png")
+      img.factory-section__robot-img(:src="imgDisable")
     .factory-section__btn-block
       button.js-buildBtn.btn.btn_type3_disable.factory-section__btn(
         disabled="true"
@@ -24,11 +24,24 @@ section.factory-section
 <script>
 import radioBlock from "./radio-block.vue";
 import partsBlock from "./parts-block.vue";
+import {mapGetters} from 'vuex';
 export default {
   components: {
     radioBlock,
     partsBlock,
   },
+  data(){
+    return{
+    }
+  },
+
+  computed:{
+    ...mapGetters(['selectedRobot']),
+    imgDisable(){
+      return 'src/img/' + this.selectedRobot+ '_disable.png'
+    }
+    
+  }
 };
 </script>
 
