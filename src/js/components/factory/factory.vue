@@ -69,13 +69,33 @@ export default {
   }
   .factory-section__img-block {
     grid-area: robot;
-  }
+    }
   .factory-section__btn-block {
     grid-area: btn;
-  }
+    }
   .factory-section__message-block {
     grid-area: message;
+    }
+  .factory-section__btn-block {
+  display: flex;
+  margin-top: 61px;
+  .factory-section__btn {
+    width: 236px;
+    }
+  .factory-section__img-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  user-select: none;
   }
+.factory-section__message-block {
+  margin-top: 61px;
+  padding-bottom: 23px;
+  }
+
+  
+}
   
 }
 </style>
