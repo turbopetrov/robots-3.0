@@ -15,7 +15,7 @@
           {{card.partValue}} шт                                             
         button.btn.storage-card__btn(:class ='(card.partValue<1)?buttonDisable:buttonActive',
                                      :disabled='card.partValue<1',
-                                     @click='sellPart(index, card.sellCost)' ).
+                                     @click='sellPart(card.partType, card.sellCost)' ).
           Продать
 </template>
 
@@ -33,12 +33,12 @@ export default {
     ...mapGetters(['ballance', 'shopCards', 'storageCards'])
   },
   methods:{
-    sellPart(index, sellCost){ 
+    sellPart(partType, sellCost){ 
       if(this.ballance+sellCost>100){
         alert('test')
       }else{
         this.$store.commit('addCoins', sellCost);
-        this.$store.commit('removePart', index);
+        this.$store.commit('removePart', partType);
       }
             
     }

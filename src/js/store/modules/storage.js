@@ -28,8 +28,9 @@ export default {
       targetPart.partValue++;
       
     },
-    removePart(state, i){
-      state.allStorageCards[i].partValue--;
+    removePart(state, type){
+      let targetPart = state.allStorageCards.find(card=>card.partType === type);
+      targetPart.partValue--;
     }
   },
 

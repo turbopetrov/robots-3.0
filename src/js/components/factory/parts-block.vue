@@ -1,24 +1,41 @@
 <template lang="pug">
 
-.factory-section__parts-block  
+.factory-section__parts-block
+  h3.heading_sm|{{currentCheckedParts}}  
   svgSprite  
   .factory-section__parts-container
     label.parts(v-for='(part,index) in 4')
-      input.parts__checkbox(type="checkbox" 
+      input.parts__checkbox(type="checkbox"
+                            :value='index'
                             :disabled='(index>biomechValue-1)?true:false'
-                            :checked='(index>biomechValue-1)?false:null')     
+                            :checked='(index>biomechValue-1)?false:null'
+                            v-model='currentCheckedParts.biomechChecked'
+                            @change='setPartStatus(currentCheckedParts)'
+                            )     
       span.parts__fake-checkbox(:class='(index>biomechValue-1)?partDisabled:partActive')
         svg.parts__img
           use(xlink:href="#1")
   .factory-section__parts-container
     label.parts(v-for='(part, index) in 4') 
-      input.parts__checkbox(type="checkbox", :disabled='(index>processorValue-1)?true:false')
+      input.parts__checkbox(type="checkbox"
+                            :value='index'
+                            :disabled='(index>processorValue-1)?true:false'
+                            :checked='(index>processorValue-1)?false:null'
+                            v-model='currentCheckedParts.processorChecked'
+                            @change='setPartStatus(currentCheckedParts)'
+                            )
       span.parts__fake-checkbox(:class='(index>processorValue-1)?partDisabled:partActive')
         svg.parts__img
           use(xlink:href="#2")
   .factory-section__parts-container
     label.parts(v-for='(part,index) in 1')
-      input.parts__checkbox(type="checkbox", :disabled='(index>soulValue-1)?true:false')
+      input.parts__checkbox(type="checkbox"
+                            :value='index'
+                            :disabled='(index>soulValue-1)?true:false'
+                            :checked='(index>soulValue-1)?false:null'
+                            v-model='currentCheckedParts.soulChecked'
+                            @change='setPartStatus(currentCheckedParts)'
+                            )
       span.parts__fake-checkbox(:class='(index>soulValue-1)?partDisabled:partActive')
         svg.parts__img
           use(xlink:href="#3")
@@ -35,10 +52,15 @@ export default {
     return{      
       partActive: '_active',
       partDisabled: '_disable',
+      currentCheckedParts:{
+        biomechChecked:[],
+        processorChecked:[],
+        soulChecked:[],
+      }
     }
   },
   computed:{
-    ...mapGetters(['storageCards']),
+    ...mapGetters(['storageCards', 'checkedParts']),
     biomechValue(){
       let biomechCard = this.storageCards.find(card=>card.partType === 'biomech');
       return biomechCard.partValue
@@ -52,7 +74,12 @@ export default {
       return soulCard.partValue
     },  
     
-  },    
+  }, 
+  methods:{
+    setPartStatus(object){
+      this.$store.commit('setCheckedParts', object)
+    }
+  }   
 }
 </script>
 

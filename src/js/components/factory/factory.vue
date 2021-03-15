@@ -86,9 +86,11 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  height: 100%;
-  user-select: none;
+  height: 100%;    
   }
+  .factory-section__robot-img{
+      user-select:none;
+    }  
 .factory-section__message-block {
   margin-top: 61px;
   padding-bottom: 23px;
