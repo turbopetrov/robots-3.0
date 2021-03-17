@@ -45,7 +45,7 @@ export default {
          :[2,0,1,1,1,2][ (n %= 10, n < 5) ? n : 5]
       ]      
     },
-    ...mapGetters(['ballance', 'shopCards', 'storageCards']),
+    ...mapGetters(['ballance']),
   }
 }
 </script>

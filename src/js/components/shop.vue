@@ -6,15 +6,15 @@
     h2.shop-section__heading.heading_md.
         Рынок комплектующих
     .shop-section__card-block
-      .shop-card(v-for='(card) of shopCards' :key ='card.dataName')
+      .shop-card(v-for='card in parts' :key ='card.type')
         .shop-card__img-container
-            img.shop-card__img(:src='card.imagePath',
+            img.shop-card__img(:src='card.shopImg',
                                :alt='card.name')
         h3.shop-card__heading.heading_sm| {{card.name}}           
-        p.shop-card__paragraph.paragraph_sm| Стоимость {{card.cost}} монет        
-        button.btn.shop-card__btn(:class ='(card.cost>ballance)?buttonDisable:buttonActive',
-                                  :disabled='card.cost>ballance',
-                                  @click='buyPart(card.cost, card.partType)').
+        p.shop-card__paragraph.paragraph_sm| Стоимость {{card.buyCost}} монет        
+        button.btn.shop-card__btn(:class ='(card.buyCost>ballance)?buttonDisable:buttonActive',
+                                  :disabled='card.buyCost>ballance',
+                                  @click='buyPart(card.buyCost, card.type)').
             Установить  
 </template>
 
@@ -28,7 +28,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['ballance', 'shopCards', 'storageCards']),    
+    ...mapGetters(['ballance', 'parts']),    
   },
   methods:{
     buyPart(quantity, type){

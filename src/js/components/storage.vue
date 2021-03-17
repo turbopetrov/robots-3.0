@@ -6,16 +6,17 @@
     h2.storage-section__heading.heading_md.
         Склад
     .storage-section__card-block
-      .storage-card(:data-name='card.dataName', v-for='(card, index) in storageCards')
+      .storage-card(v-for='card in parts' :key='card.type')
         h3.storage-card__heading.heading_sm.
           {{card.name}}    
         p.storage-card__paragraph.paragraph_sm.
           Стоимость {{card.sellCost}} монет
         h3.storage-card__heading.heading_sm.
-          {{card.partValue}} шт                                             
-        button.btn.storage-card__btn(:class ='(card.partValue<1)?buttonDisable:buttonActive',
-                                     :disabled='card.partValue<1',
-                                     @click='sellPart(card.partType, card.sellCost)' ).
+          {{card.storageValue}} шт                                             
+        button.btn.storage-card__btn(:class ='(card.storageValue<1)?buttonDisable:buttonActive',
+                                     :disabled='card.storageValue<1',
+                                     @click='sellPart(card.type, card.sellCost)'
+                                    ).
           Продать
 </template>
 
@@ -30,7 +31,7 @@ export default {
   },
 
   computed:{
-    ...mapGetters(['ballance', 'shopCards', 'storageCards'])
+    ...mapGetters(['ballance', 'parts'])
   },
   methods:{
     sellPart(partType, sellCost){ 
@@ -39,8 +40,7 @@ export default {
       }else{
         this.$store.commit('addCoins', sellCost);
         this.$store.commit('removePart', partType);
-      }
-            
+      }            
     }
   }
 }
