@@ -1,44 +1,33 @@
 
 <template lang="pug">
 
-.factory-section__parts-block  
-  svgSprite  
-  .factory-section__parts-container
-    label.parts(v-for='(part,index) in 4')
-      input.parts__checkbox(type="checkbox")     
-      span.parts__fake-checkbox
-        svg.parts__img
-          use(xlink:href="#1")
-  .factory-section__parts-container
-    label.parts(v-for='(part, index) in 4') 
-      input.parts__checkbox(type="checkbox")
-      span.parts__fake-checkbox
-        svg.parts__img
-          use(xlink:href="#2")
-  .factory-section__parts-container
-    label.parts(v-for='(part,index) in 1')
-      input.parts__checkbox(type="checkbox")
-      span.parts__fake-checkbox
-        svg.parts__img
-          use(xlink:href="#3")
+.factory-section__parts-block
+  svgSprite 
+  partsBtn(:targetPart = 'biomechPart')
+  partsBtn(:targetPart = 'processorPart')
+  partsBtn(:targetPart = 'soulPart' )
+  
+
+ 
 </template>
 
 <script>
 import svgSprite from "./svg-sprites.vue";
+import partsBtn from "./parts-btn.vue";
 import {mapGetters} from 'vuex';
 export default {
   components: {
     svgSprite,
+    partsBtn,
   },
   data(){
     return{      
-      partActive: '_active',
-      partDisabled: '_disable',
+      
       
     }
   },
   computed:{
-    ...mapGetters(['parts']),
+    ...mapGetters(['biomechPart','processorPart','soulPart', 'parts']),
         
   }, 
   methods:{
