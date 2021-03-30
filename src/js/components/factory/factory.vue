@@ -10,12 +10,9 @@ section.factory-section
     radioBlock
     partsBlock 
     .factory-section__img-block
-      img.factory-section__robot-img(:src="imgDisable")
+      robotImg
     .factory-section__btn-block
-      button.js-buildBtn.btn.btn_type3_disable.factory-section__btn(
-        disabled="true"
-      ).
-        Произвести за 10 монет
+      buildBtn(:status='readyToBuildStatus')
     .factory-section__message-block
       p.paragraph_xs.factory-section__message.js-factoryMessage.
         Для производства биоробота не хватает биомеханизмов, процессоров, души и монет
@@ -24,11 +21,15 @@ section.factory-section
 <script>
 import radioBlock from "./radio-block.vue";
 import partsBlock from "./parts-block.vue";
+import buildBtn from "./buildBtn.vue";
+import robotImg from "./robotImg.vue";
 import {mapGetters} from 'vuex';
 export default {
   components: {
     radioBlock,
     partsBlock,
+    buildBtn,
+    robotImg,
   },
   data(){
     return{
@@ -36,11 +37,13 @@ export default {
   },
 
   computed:{
-    ...mapGetters(['selectedRobot']),
+    ...mapGetters(['selectedRobot', 'parts', 'ballance','readyToBuildStatus']),
     imgDisable(){
       return 'src/img/' + this.selectedRobot+ '_disable.png'
-    }
-    
+    },
+    imgActive(){
+      return 'src/img/' + this.selectedRobot+ '_active.png'
+    },    
   }
 };
 </script>
@@ -79,9 +82,7 @@ export default {
   .factory-section__btn-block {
   display: flex;
   margin-top: 61px;
-  .factory-section__btn {
-    width: 236px;
-    }
+  
   .factory-section__img-block {
   display: flex;
   flex-direction: column;

@@ -12,7 +12,7 @@
 </template>
   
 <script>
-
+import {mapGetters} from 'vuex';
 export default {
   
   props: ['type', 'targetPart', 'partHandler'],
@@ -23,14 +23,15 @@ export default {
     }
   },
   computed:{  
-    
+    ...mapGetters(['biomechPart','processorPart','soulPart','readyToBuildStatus']),
     
   },
   methods:{
     changePartStatus(type, index){
-      this.$store.commit('changePartStatus', {type, index})
-      
-
+      this.$store.commit('changePartStatus', {type, index});
+      if (this.readyToBuildStatus === true){
+        this.$store.commit('setRoboStatus', '_active')
+      }else this.$store.commit('setRoboStatus', '_disable')    
     }
   }
 }

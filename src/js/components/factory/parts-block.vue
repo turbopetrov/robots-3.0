@@ -1,7 +1,8 @@
 
 <template lang="pug">
 
-.factory-section__parts-block
+.factory-section__parts-block 
+  
   svgSprite 
   partsBtn(:targetPart = 'biomechPart')
   partsBtn(:targetPart = 'processorPart')
@@ -21,17 +22,13 @@ export default {
     partsBtn,
   },
   data(){
-    return{      
-      
-      
+    return{       
     }
   },
   computed:{
-    ...mapGetters(['biomechPart','processorPart','soulPart', 'parts']),
-        
+    ...mapGetters(['biomechPart','processorPart','soulPart','parts','ballance']),    
   }, 
-  methods:{
-    
+  methods:{   
     
   }   
 }

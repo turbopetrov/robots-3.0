@@ -1,6 +1,6 @@
 export default {
   state: {
-    currentBallance: 100,
+    currentBallance: 75,
   },
   mutations: {
     addCoins(state, quantity) {

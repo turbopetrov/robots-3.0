@@ -2,6 +2,7 @@ export default {
   state: {
     roboType: 'Front',
     roboGender: 'Male',
+    roboStatus: '_disable',
   },
 
   getters: {
@@ -10,6 +11,9 @@ export default {
     },
     roboGender(state) {
       return state.roboGender;
+    },
+    roboStatus(state) {
+      return state.roboStatus;
     },
     selectedRobot(state) {
       return state.roboType + state.roboGender;
@@ -22,6 +26,9 @@ export default {
     },
     setRoboGender(state, gender) {
       return state.roboGender = gender;
+    },
+    setRoboStatus(state, status) {
+      return state.roboStatus = status;
     },
   },
 };
