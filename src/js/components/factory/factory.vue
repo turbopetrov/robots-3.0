@@ -14,8 +14,7 @@ section.factory-section
     .factory-section__btn-block
       buildBtn(:status='readyToBuildStatus')
     .factory-section__message-block
-      p.paragraph_xs.factory-section__message.js-factoryMessage.
-        Для производства биоробота не хватает биомеханизмов, процессоров, души и монет
+      factoryMessage
 </template>
 
 <script>
@@ -23,6 +22,7 @@ import radioBlock from "./radio-block.vue";
 import partsBlock from "./parts-block.vue";
 import buildBtn from "./buildBtn.vue";
 import robotImg from "./robotImg.vue";
+import factoryMessage from "./factory-message.vue";
 import {mapGetters} from 'vuex';
 export default {
   components: {
@@ -30,6 +30,7 @@ export default {
     partsBlock,
     buildBtn,
     robotImg,
+    factoryMessage,
   },
   data(){
     return{
