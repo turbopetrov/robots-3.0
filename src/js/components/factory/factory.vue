@@ -81,25 +81,25 @@ export default {
     grid-area: message;
     }
   .factory-section__btn-block {
-  display: flex;
-  margin-top: 61px;
-  
+    display: flex;
+    margin-top: 61px;
+   }
   .factory-section__img-block {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  height: 100%;    
-  }
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;    
+    }
   .factory-section__robot-img{
-      user-select:none;
+    position: absolute;
+    top: 46px;
+    user-select:none;
+            
     }  
-.factory-section__message-block {
-  margin-top: 61px;
-  padding-bottom: 23px;
-  }
+  .factory-section__message-block {
+    margin-top: 61px;    
+   } 
+}  
 
-  
-}
-  
-}
 </style>

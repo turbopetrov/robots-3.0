@@ -10,7 +10,7 @@
         .coins-block__coins                     
             img.coins-block__coins-item(:src="coinPath", v-for='coin in ballance' alt="Монетка")                       
         .paragraph_md.coins-block__coins-quantity.
-            {{ballance}} biorobo {{message}}
+            {{ballance}} biorobo {{walletMessage}}
                      
     .wallet-section__action-block
         button.action-block__btn(@click="getCoins(getCoinsValue)").
@@ -36,16 +36,8 @@ export default {
       this.$store.commit('addCoins', quantity);       
     },    
   },
-  computed:{
-    message(){ 
-      const varWords = [' монета',' монеты', ' монет' ];
-      let n = this.ballance;
-      return varWords[
-       (n %= 100, 20 > n && n > 4) ? 2
-         :[2,0,1,1,1,2][ (n %= 10, n < 5) ? n : 5]
-      ]      
-    },
-    ...mapGetters(['ballance']),
+  computed:{    
+    ...mapGetters(['ballance', 'walletMessage']),
   }
 }
 </script>

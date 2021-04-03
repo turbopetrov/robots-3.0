@@ -12,8 +12,7 @@ export default {
   },
   computed:{
     ...mapGetters(['selectedRobot','roboStatus']),
-    robotImage(){
-      
+    robotImage(){      
       return `src/img/${this.selectedRobot}${this.roboStatus}.png`
     }
   }
