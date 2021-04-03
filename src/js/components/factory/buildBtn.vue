@@ -26,6 +26,7 @@ export default {
       this.$store.commit('resetParts');
       this.$store.commit('setRoboStatus', '_ready');
       this.$store.commit('removeCoins', 10);
+      this.$store.commit('showFactoryPopup')
       
     }
   }

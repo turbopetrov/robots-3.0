@@ -2,6 +2,7 @@ import Vue from 'vue';
 
 export default {
   state: {
+    isFactoryPopupShow: false,
     allParts: [
       {
         type: 'biomech',
@@ -12,7 +13,7 @@ export default {
         needToBuild: 4,
         storageValue: 0,
         factoryValue: 0,
-        installed: new Array(4).fill(false),
+        installed: [],
       },
       {
         type: 'processor',
@@ -23,7 +24,7 @@ export default {
         needToBuild: 4,
         storageValue: 0,
         factoryValue: 0,
-        installed: new Array(4).fill(false),
+        installed: [],
       },
       {
         type: 'soul',
@@ -34,11 +35,14 @@ export default {
         needToBuild: 1,
         storageValue: 0,
         factoryValue: 0,
-        installed: Array(1).fill(false),
+        installed: [],
       },
     ],
   },
   getters: {
+    isFactoryPopupShow(state){
+      return state.isFactoryPopupShow;
+    },
     parts(state) {
       return state.allParts;
     },
@@ -63,10 +67,14 @@ export default {
         }
       } return true;
     },
-
   },
 
   mutations: {
+    setValueofPartsForBuild(state){
+      for (let i in state.allParts){
+        state.allParts[i].installed = new Array(state.allParts[i].installed).fill(false)
+      }
+    },
     addPart(state, type) {
       const targetPart = state.allParts.find((part) => part.type === type);
       targetPart.storageValue++;
@@ -94,5 +102,11 @@ export default {
         part.installed = new Array(part.needToBuild).fill(false);
       }
     },
+    showFactoryPopup(state){
+      state.isFactoryPopupShow = true;
+    },
+    closeFactoryPopup(state){
+      state.isFactoryPopupShow = false;
+    }
   },
 };

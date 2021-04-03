@@ -36,7 +36,7 @@ export default {
   methods:{
     sellPart(partType, sellCost){ 
       if(this.ballance+sellCost>100){
-        alert('test')
+        this.$store.commit('showWalletPopup')
       }else{
         this.$store.commit('addCoins', sellCost);
         this.$store.commit('removePart', partType);

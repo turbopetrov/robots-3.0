@@ -26,7 +26,7 @@
   }
   &__img-block img {
     width: 43px;
-    opacity: 0;
+    opacity: 1;
   }
   &__text-block {
     display: flex;
@@ -65,9 +65,4 @@
     }
   }
 }
-.popup_wallet img {
-  opacity: 1;
-}
-.hiden {
-  display: none;
-}
+
