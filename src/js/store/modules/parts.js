@@ -50,10 +50,10 @@ export default {
     },
     soulPart(state) {
       return state.allParts.find((part) => part.type === 'soul');
-    },
-    readyToBuildStatus(state, rootState) {
+    },    
+    readyToBuildStatus(state,getters, rootState) {
       for (const i in state.allParts) {
-        if (rootState.currentBallance < 10) {
+        if (rootState.wallet.currentBallance < 10) {
           return false;
           break;
         }
