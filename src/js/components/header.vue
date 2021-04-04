@@ -2,7 +2,8 @@
   header.header
     .logo
         img.logo__img(:src='logoPath')
-    button.btn.btn_type3_normal.header__btn Произвести биоробота
+    button.btn.btn_type3_normal.header__btn(@click = 'goToFactory').
+      Произвести биоробота
 </template>
 
 <script>
@@ -10,6 +11,11 @@ export default {
   data(){
     return{
       logoPath: '../img/logo.svg',
+    }
+  },
+  methods:{
+    goToFactory(){
+      window.scrollTo(0,1800);
     }
   }
 }

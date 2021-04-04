@@ -1,12 +1,12 @@
 export default {
   state: {
-    isWalletPopupShow:false,
+    isWalletPopupShow: false,
     currentBallance: 75,
   },
   mutations: {
     addCoins(state, quantity) {
       if (state.currentBallance + quantity > 100) {
-        state.isWalletPopupShow=true;
+        state.isWalletPopupShow = true;
       } else {
         state.currentBallance += quantity;
       }
@@ -14,16 +14,16 @@ export default {
     removeCoins(state, quantity) {
       state.currentBallance -= quantity;
     },
-    showWalletPopup(state){
+    showWalletPopup(state) {
       state.isWalletPopupShow = true;
     },
-    closeWalletPopup(state){
+    closeWalletPopup(state) {
       state.isWalletPopupShow = false;
-    }
+    },
   },
   getters: {
-    isWalletPopupShow(state){
-      return state.isWalletPopupShow
+    isWalletPopupShow(state) {
+      return state.isWalletPopupShow;
     },
     ballance(state) {
       return state.currentBallance;

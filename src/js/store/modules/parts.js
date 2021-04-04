@@ -40,7 +40,7 @@ export default {
     ],
   },
   getters: {
-    isFactoryPopupShow(state){
+    isFactoryPopupShow(state) {
       return state.isFactoryPopupShow;
     },
     parts(state) {
@@ -54,8 +54,8 @@ export default {
     },
     soulPart(state) {
       return state.allParts.find((part) => part.type === 'soul');
-    },    
-    readyToBuildStatus(state,getters, rootState) {
+    },
+    readyToBuildStatus(state, getters, rootState) {
       for (const i in state.allParts) {
         if (rootState.wallet.currentBallance < 10) {
           return false;
@@ -70,9 +70,9 @@ export default {
   },
 
   mutations: {
-    setValueofPartsForBuild(state){
-      for (let i in state.allParts){
-        state.allParts[i].installed = new Array(state.allParts[i].installed).fill(false)
+    setValueofPartsForBuild(state) {
+      for (const i in state.allParts) {
+        state.allParts[i].installed = new Array(state.allParts[i].installed).fill(false);
       }
     },
     addPart(state, type) {
@@ -102,11 +102,11 @@ export default {
         part.installed = new Array(part.needToBuild).fill(false);
       }
     },
-    showFactoryPopup(state){
+    showFactoryPopup(state) {
       state.isFactoryPopupShow = true;
     },
-    closeFactoryPopup(state){
+    closeFactoryPopup(state) {
       state.isFactoryPopupShow = false;
-    }
+    },
   },
 };
