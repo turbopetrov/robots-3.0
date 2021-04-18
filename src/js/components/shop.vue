@@ -11,16 +11,23 @@
             img.shop-card__img(:src='card.shopImg',
                                :alt='card.name')
         h3.shop-card__heading.heading_sm| {{card.name}}           
-        p.shop-card__paragraph.paragraph_sm| Стоимость {{card.buyCost}} монет        
-        button.btn.shop-card__btn(:class ='(card.buyCost>ballance)?buttonDisable:buttonActive',
-                                  :disabled='card.buyCost>ballance',
-                                  @click='buyPart(card.buyCost, card.type)').
-            Установить  
+        p.shop-card__paragraph.paragraph_sm| Стоимость {{card.buyCost}} монет
+        .shop-card__btn
+          mainBtn(type='btn_type1',
+                 :status='card.buyCost>ballance?false:true',
+                 @handler='buyPart(card.buyCost, card.type)'
+                  ).
+            Установить
+        
 </template>
 
 <script>
+import mainBtn from './UI/button.vue';
 import{mapGetters} from 'vuex';
 export default {
+  components:{
+    mainBtn
+  },
   data(){
     return{
       buttonActive: 'btn_type1_normal',
@@ -41,6 +48,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/ui-kit/colors.scss';
+@import '../../scss/ui-kit/buttons/btn_type1.scss';
 .shop-section {
   position: relative;
   display: flex;
