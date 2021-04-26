@@ -18,7 +18,11 @@
     //-              @handler='buyPart(card.buyCost, card.type)'
     //-               ).
     //-         Установить
-    card(cardType='shop')
+    card(cardType='shop',
+        btnStatus='false',
+        btnTitle='Устаановить', 
+            
+        )
         
 </template>
 
