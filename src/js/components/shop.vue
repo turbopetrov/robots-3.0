@@ -5,28 +5,29 @@
             03
     h2.shop-section__heading.heading_md.
         Рынок комплектующих
-    .shop-section__card-block
-      .shop-card(v-for='card in parts' :key ='card.type')
-        .shop-card__img-container
-            img.shop-card__img(:src='card.shopImg',
-                               :alt='card.name')
-        h3.shop-card__heading.heading_sm| {{card.name}}           
-        p.shop-card__paragraph.paragraph_sm| Стоимость {{card.buyCost}} монет
-        .shop-card__btn
-          mainBtn(type='btn_type1',
-                 :status='card.buyCost>ballance?false:true',
-                 @handler='buyPart(card.buyCost, card.type)'
-                  ).
-            Установить
+    //- .shop-section__card-block
+    //-   .shop-card(v-for='card in parts' :key ='card.type')
+    //-     .shop-card__img-container
+    //-         img.shop-card__img(:src='card.shopImg',
+    //-                            :alt='card.name')
+    //-     h3.shop-card__heading.heading_sm| {{card.name}}           
+    //-     p.shop-card__paragraph.paragraph_sm| Стоимость {{card.buyCost}} монет
+    //-     .shop-card__btn
+    //-       mainBtn(type='btn_type1',
+    //-              :status='card.buyCost>ballance?false:true',
+    //-              @handler='buyPart(card.buyCost, card.type)'
+    //-               ).
+    //-         Установить
+    card(cardType='shop')
         
 </template>
 
 <script>
-import mainBtn from './UI/button.vue';
+import card from './UI/card.vue';
 import{mapGetters} from 'vuex';
 export default {
   components:{
-    mainBtn
+    card
   },
   data(){
     return{

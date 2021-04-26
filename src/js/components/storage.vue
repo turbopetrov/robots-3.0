@@ -5,24 +5,29 @@
             04
     h2.storage-section__heading.heading_md.
         Склад
-    .storage-section__card-block
-      .storage-card(v-for='card in parts' :key='card.type')
-        h3.storage-card__heading.heading_sm.
-          {{card.name}}    
-        p.storage-card__paragraph.paragraph_sm.
-          Стоимость {{card.sellCost}} монет
-        h3.storage-card__heading.heading_sm.
-          {{card.storageValue}} шт                                             
-        button.btn.storage-card__btn(:class ='(card.storageValue<1)?buttonDisable:buttonActive',
-                                     :disabled='card.storageValue<1',
-                                     @click='sellPart(card.type, card.sellCost)'
-                                    ).
-          Продать
+    //- .storage-section__card-block
+    //-   .storage-card(v-for='card in parts' :key='card.type')
+    //-     h3.storage-card__heading.heading_sm.
+    //-       {{card.name}}    
+    //-     p.storage-card__paragraph.paragraph_sm.
+    //-       Стоимость {{card.sellCost}} монет
+    //-     h3.storage-card__heading.heading_sm.
+    //-       {{card.storageValue}} шт                                             
+    //-     button.btn.storage-card__btn(:class ='(card.storageValue<1)?buttonDisable:buttonActive',
+    //-                                  :disabled='card.storageValue<1',
+    //-                                  @click='sellPart(card.type, card.sellCost)'
+    //-                                 ).
+    //-       Продать
+    card(cardType='storage')  
 </template>
 
 <script>
+import card from './UI/card.vue'
 import {mapGetters} from 'vuex';
 export default {
+  components:{
+    card,
+  },
   data(){
     return{
       buttonActive: 'btn_type2_normal',

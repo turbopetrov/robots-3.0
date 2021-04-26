@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  props:['type', 'status'],
+  props:['btnType', 'status'],
   data(){
     return{
 
@@ -17,8 +17,8 @@ export default {
   },
   computed:{
     btnClass(){
-      return [this.type, 
-              this.status?this.type+'_normal':this.type+'_disable'
+      return [this.btnType, 
+              this.status?this.btnType+'_normal':this.btnType+'_disable'
               ]
     }
   },
