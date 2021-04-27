@@ -6,7 +6,7 @@ export default {
     allParts: [
       {
         type: 'biomech',
-        name: 'биомеханизм',
+        name: 'Биомеханизм',
         shopImg: '../../img/robotHand.svg',
         buyCost: 7,
         sellCost: 5,
@@ -17,7 +17,7 @@ export default {
       },
       {
         type: 'processor',
-        name: 'процессор',
+        name: 'Процессор',
         shopImg: '../../img/processor.svg',
         buyCost: 5,
         sellCost: 3,
@@ -28,7 +28,7 @@ export default {
       },
       {
         type: 'soul',
-        name: 'душа',
+        name: 'Душа',
         shopImg: '../../img/face.svg',
         buyCost: 25,
         sellCost: 15,

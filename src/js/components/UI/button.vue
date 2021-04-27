@@ -1,7 +1,7 @@
 <template lang="pug">
   button.btn(:disabled='status?false:true'                                  
-              :class = 'btnClass' 
-              @click = 'btnHandler'
+              :class='btnClass' 
+              @click='handler'
             ).
     {{btnTitle}}
     
@@ -23,8 +23,8 @@ export default {
     }
   },
   methods:{
-    btnHandler(){
-      this.$emit('handler')
+    handler(){
+      this.$emit('btn-handler')
     }
   }
 }

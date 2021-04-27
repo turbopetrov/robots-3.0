@@ -1,52 +1,65 @@
 <template lang="pug">
-  .card-block
-    .card(v-for='card in parts' :key ='card.type')
-      .card__img-container(v-if='cardType==="shop"')  
-        img.shop-card__img(
-          :src='card.shopImg',
-          :alt='card.img'
-        )
-      h3.card__heading.heading_sm| {{card.name}}
-      p.card__paragraph.paragraph_sm.
-        Стоимость {{(cardType==='shop')?card.buyCost:card.sellCost}} монет
-      h3.card__heading.heading_sm(v-if='cardType==="storage"').
-        {{card.storageValue}} шт
-      mainBtn.card__btn(
-              :btnType='cardType',
-              :status='btnStatus',
-              :btnTitle='btnTitle',                            
-              )
-      
-
+  .card
+    .card__img-container(v-if='cardType==="shop"')  
+      img.shop-card__img(
+        :src='card.shopImg'
+        :alt='card.img'
+      )
+    h3.card__heading.heading_sm| {{card.name}}
+    p.card__paragraph.paragraph_sm.
+      Стоимость {{(cardType==='shop')?card.buyCost:card.sellCost}} монет
+    h3.card__heading.heading_sm(v-if='cardType==="storage"').
+      {{card.storageValue}} шт
+    button.btn(
+      :disabled='btnDisabled',                                  
+      :class ='btnClass',
+      @click ='btnHandler',
+      ).
+      {{btnTitle}}    
 </template>
 
 <script>
 import mainBtn from './button.vue';
 import{mapGetters} from 'vuex';
 export default {
-  props:['cardType', 'btnStatus', 'btnTitle', ],
+  props:{
+    card: Object,
+    cardType:String, 
+    btnDisabled:Boolean, 
+    btnTitle: String, 
+          
+    },
   components:{
     mainBtn
   },
-  data(){
-    return{
-
+  data(){return{}},
+  computed:{
+    ...mapGetters(['ballance', 'parts']), 
+    btnClass(){
+      return [this.btnDisabled?'btn_'+this.cardType+'_disable':'btn_'+this.cardType+'_normal']
     }
   },
-  computed:{
-    ...mapGetters(['ballance', 'parts']),
-    
+  methods:{
+    btnHandler(){
+      this.$emit('action')
+    }
   }
 }
 </script>
 
-<style lang="scss" scoped>
-  .card-block {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;    
-  }
-  
+<style lang="scss" scoped> 
+ @import '../../../scss/ui-kit/colors.scss';
+  .btn {
+    font-weight: 500;
+    font-size: 16px;
+    font-family: Montserrat;
+    font-style: normal;
+    text-align: center;
+    border: 2px solid inherit;
+    border-radius: 60px;
+    outline: none;
+    cursor: pointer;
+} 
   .card{
     display: flex;
     flex-direction: column;

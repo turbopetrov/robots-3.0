@@ -5,20 +5,16 @@
             04
     h2.storage-section__heading.heading_md.
         Склад
-    //- .storage-section__card-block
-    //-   .storage-card(v-for='card in parts' :key='card.type')
-    //-     h3.storage-card__heading.heading_sm.
-    //-       {{card.name}}    
-    //-     p.storage-card__paragraph.paragraph_sm.
-    //-       Стоимость {{card.sellCost}} монет
-    //-     h3.storage-card__heading.heading_sm.
-    //-       {{card.storageValue}} шт                                             
-    //-     button.btn.storage-card__btn(:class ='(card.storageValue<1)?buttonDisable:buttonActive',
-    //-                                  :disabled='card.storageValue<1',
-    //-                                  @click='sellPart(card.type, card.sellCost)'
-    //-                                 ).
-    //-       Продать
-    card(cardType='storage')  
+    .card-block
+      card(
+          v-for='card in parts'
+          :card='card'
+          :key='card.type'       
+          cardType='storage'
+          :btnDisabled='card.storageValue<1'
+          btnTitle='Продать'
+          @action='sellPart(card.type, card.sellCost)'
+          )  
 </template>
 
 <script>
@@ -36,7 +32,8 @@ export default {
   },
 
   computed:{
-    ...mapGetters(['ballance', 'parts'])
+    ...mapGetters(['ballance', 'parts']),
+   
   },
   methods:{
     sellPart(partType, sellCost){ 
@@ -57,26 +54,10 @@ export default {
   display: flex;
   flex-direction: column;
   margin-top: 100px;
-  .storage-section__card-block {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 60px;
-  }
-}
-.storage-card {
+ .card-block {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 236px;
-  .storage-card__heading {
-    margin-top: 5px;
-  }
-  .storage-card__paragraph {
-    margin-top: 15px;
-  }
-  .storage-card__btn {
-    margin-top: 36px;
-  }
+  flex-direction: row;
+  justify-content: space-between;    
+  } 
 }
 </style>
