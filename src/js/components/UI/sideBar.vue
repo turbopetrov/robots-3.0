@@ -32,13 +32,14 @@ export default {
     width: 24px;
     color: $grey-color;    
     @extend %paragraph;
-    font: 12px/200%;
+    font-size: 12px;
+    line-height: 200%;
     text-transform: uppercase;
   &__screen-number {
     display: block;
-    margin-top: 11px;
+    margin-top: 11px;    
     text-align: center;
-    font: 24px/24px;
+   
   }
   &__scroll {
     display: flex;
