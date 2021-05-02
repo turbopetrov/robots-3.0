@@ -1,8 +1,6 @@
 <template lang="pug">
   section.wallet-section
-    .side-bar
-        p.side-bar__screen-number.
-            02
+    sideBar(number='02')
     .wallet-section__title-block
         h2.wallet-section__title.heading_md.
             Кошелек криптовалют
@@ -23,8 +21,12 @@
 </template>
 
 <script>
+import sideBar from './UI/sideBar.vue';
 import {mapGetters} from 'vuex';
 export default {
+  components:{
+    sideBar
+  },
   data(){
     return{
       coinPath: "../img/coin.png",        

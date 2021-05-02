@@ -8,17 +8,17 @@
 }
 .paragraph_xl {
   @extend %paragraph;
-  @include text-size(24px, 133%);
+  font: 24px/133%;
 }
 .paragraph_md {
   @extend %paragraph;
-  @include text-size(24px, 100%);
+  font: 24px/100%;
 }
 .paragraph_sm {
   @extend %paragraph;
-  @include text-size(16px, 150%);
+  font: 16px/150%;
 }
 .paragraph_xs {
   @extend %paragraph;
-  @include text-size(12px, 133%);
+  font: 12px/133%;
 }

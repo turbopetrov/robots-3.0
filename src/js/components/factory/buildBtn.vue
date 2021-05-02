@@ -12,8 +12,8 @@ export default {
   props:['status'],
   data(){
     return{
-      btnDisabled:'btn_type3_disable',
-      btnActive: 'btn_type3_normal',
+      btnDisabled:'btn_factory_disable',
+      btnActive: 'btn_factory_normal',
     }
   },
 
@@ -36,7 +36,7 @@ export default {
 <style lang="scss" scoped>
 @import "src/scss/mixins/mixins.scss";
 @import "src/scss/ui-kit/colors.scss";
-@import "src/scss/ui-kit/buttons/btn_type3.scss";
+@import "src/scss/ui-kit/buttons/btn_factory.scss";
   .factory-section__btn {
     width: 236px;
     }

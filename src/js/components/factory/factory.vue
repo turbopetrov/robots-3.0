@@ -1,8 +1,6 @@
 <template lang="pug">
 section.factory-section
-  .side-bar
-    p.side-bar__screen-number.
-      05
+  sideBar(number='05')
   .factory-section__grid-container
     .factory-section__title-block
       h2.heading_md.factory-section__heading.
@@ -18,6 +16,7 @@ section.factory-section
 </template>
 
 <script>
+import sideBar from '../UI/sideBar.vue';
 import radioBlock from "./radio-block.vue";
 import partsBlock from "./parts-block.vue";
 import buildBtn from "./buildBtn.vue";
@@ -31,6 +30,7 @@ export default {
     buildBtn,
     robotImg,
     factoryMessage,
+    sideBar
   },
   data(){
     return{

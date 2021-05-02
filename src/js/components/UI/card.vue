@@ -8,9 +8,9 @@
     h3.card__heading.heading_sm| {{card.name}}
     p.card__paragraph.paragraph_sm.
       Стоимость {{(cardType==='shop')?card.buyCost:card.sellCost}} монет
-    h3.card__heading.heading_sm(v-if='cardType==="storage"').
+    h3.card__heading_storage.heading_sm(v-if='cardType==="storage"').
       {{card.storageValue}} шт
-    button.btn(
+    button.card__btn(
       :disabled='btnDisabled',                                  
       :class ='btnClass',
       @click ='btnHandler',
@@ -49,17 +49,6 @@ export default {
 
 <style lang="scss" scoped> 
  @import '../../../scss/ui-kit/colors.scss';
-  .btn {
-    font-weight: 500;
-    font-size: 16px;
-    font-family: Montserrat;
-    font-style: normal;
-    text-align: center;
-    border: 2px solid inherit;
-    border-radius: 60px;
-    outline: none;
-    cursor: pointer;
-} 
   .card{
     display: flex;
     flex-direction: column;
@@ -76,11 +65,25 @@ export default {
     &__heading{
       margin-top: 56px;
     }
+    &__heading_storage{
+      margin-top: 15px;
+    }
     &__paragraph{
       margin-top: 5px;
     }
     &__btn{
-      margin-top: 36px;
+      width: 200px;
+      height: 48px;
+      margin-top: 24px;
+      font-weight: 500;
+      font-size: 16px;
+      font-family: Montserrat;
+      font-style: normal;
+      text-align: center;
+      border: 2px solid inherit;
+      border-radius: 60px;
+      outline: none;
+      cursor: pointer;      
     }
   }
 

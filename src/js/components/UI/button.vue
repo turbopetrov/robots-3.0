@@ -1,15 +1,19 @@
 <template lang="pug">
-  button.btn(:disabled='status?false:true'                                  
-              :class='btnClass' 
-              @click='handler'
-            ).
-    {{btnTitle}}
+  button.btn(
+      :disabled='btnDisabled',                                  
+      :class ='btnClass',
+      @click ='handler',
+      )        
+    slot
     
 </template>
 
 <script>
 export default {
-  props:['btnType', 'status', 'btnTitle'],
+  props:{    
+    btnType:String, 
+    btnDisabled:Boolean,              
+    },
   data(){
     return{
 
@@ -17,14 +21,13 @@ export default {
   },
   computed:{
     btnClass(){
-      return [
-        this.status?'btn_'+this.btnType+'_normal':'btn_'+this.btnType+'_disable'
-        ]
+      return [this.btnDisabled?'btn_'+this.btnType+'_disable':'btn_'+this.btnType+'_normal']
+        
     }
   },
   methods:{
     handler(){
-      this.$emit('btn-handler')
+      this.$emit('action')
     }
   }
 }

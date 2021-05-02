@@ -1,8 +1,6 @@
 <template lang="pug">
   section.storage-section
-    .side-bar
-        p.side-bar__screen-number.
-            04
+    sideBar(number='04')
     h2.storage-section__heading.heading_md.
         Склад
     .card-block
@@ -18,11 +16,13 @@
 </template>
 
 <script>
+import sideBar from './UI/sideBar.vue';
 import card from './UI/card.vue'
 import {mapGetters} from 'vuex';
 export default {
   components:{
     card,
+    sideBar
   },
   data(){
     return{

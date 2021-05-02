@@ -1,8 +1,6 @@
 <template lang="pug">
   section.shop-section
-    .side-bar
-        p.side-bar__screen-number.
-            03
+    sideBar(number='03')
     h2.shop-section__heading.heading_md.
         Рынок комплектующих
     .card-block
@@ -14,16 +12,17 @@
         :btnDisabled='card.buyCost>ballance'
         btnTitle='Установить'
         @action='buyPart(card.buyCost, card.type)'
-        )
-        
+        )        
 </template>
 
 <script>
+import sideBar from './UI/sideBar.vue';
 import card from './UI/card.vue';
 import{mapGetters} from 'vuex';
 export default {
   components:{
-    card
+    card,
+    sideBar
   },
   data(){
     return{
