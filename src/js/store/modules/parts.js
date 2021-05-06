@@ -69,12 +69,7 @@ export default {
     },
   },
 
-  mutations: {
-    setValueofPartsForBuild(state) {
-      for (const i in state.allParts) {
-        state.allParts[i].installed = new Array(state.allParts[i].installed).fill(false);
-      }
-    },
+  mutations: {    
     addPart(state, type) {
       const targetPart = state.allParts.find((part) => part.type === type);
       targetPart.storageValue++;

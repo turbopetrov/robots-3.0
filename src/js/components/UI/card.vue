@@ -47,8 +47,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped> 
- @import '../../../scss/ui-kit/colors.scss';
+<style lang="scss"> 
+@import '../../../scss/ui-kit/colors.scss';
   .card{
     display: flex;
     flex-direction: column;
@@ -79,8 +79,8 @@ export default {
       font-size: 16px;
       font-family: Montserrat;
       font-style: normal;
-      text-align: center;
-      border: 2px solid inherit;
+      text-align: center; 
+      border: 2px solid;     
       border-radius: 60px;
       outline: none;
       cursor: pointer;      

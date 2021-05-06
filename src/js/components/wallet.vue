@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import wordForm from '../utils/functions.js';
 import sideBar from './UI/sideBar.vue';
 import {mapGetters} from 'vuex';
 export default {
@@ -40,6 +41,9 @@ export default {
   },
   computed:{    
     ...mapGetters(['ballance', 'walletMessage']),
+    walletMessage(){
+      return wordForm([' монета', ' монеты', ' монет'], this.ballance);
+    }
   }
 }
 </script>

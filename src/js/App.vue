@@ -56,7 +56,7 @@ export default {
     }
   },
   created: function(){
-    this.$store.commit('setValueofPartsForBuild')
+    this.$store.commit('resetParts')
   },
   computed:{
     ...mapGetters(['isWalletPopupShow', 'isFactoryPopupShow']),

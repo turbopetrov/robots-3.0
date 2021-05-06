@@ -4,6 +4,7 @@
 </template>
 
 <script>
+import wordForm from '../../utils/functions.js';
 import { mapGetters } from 'vuex'
 export default {
   data(){return {}},
@@ -32,44 +33,25 @@ export default {
         return `${basicMessage + messageArr[0]}, ${messageArr[1]} и ${messageArr[2]}`;
       case 4:
         return `${basicMessage + messageArr[0]}, ${messageArr[1]}, ${messageArr[2]} и ${messageArr[3]}`;
-      }
-      
+      }      
     },
     
     biomechNeedMessage(){
       let biomechNeed = this.biomechPart.installed.filter((i)=>{return i===false}).length;
-      switch (biomechNeed) {
-        case 0:
-          return null;
-        case 1:
-          return biomechNeed+' '+this.biomechPart.name+'а';
-        default:
-          return biomechNeed+' '+this.biomechPart.name+'ов';
-      }
+      return (biomechNeed===0)
+        ?null:biomechNeed + wordForm([' биомеханизма', ' биомеханизмов', ''], biomechNeed);       
     },
 
     processorNeedMessage(){
       let processorNeed = this.processorPart.installed.filter((i)=>{return i===false}).length;
-      switch (processorNeed) {
-        case 0:
-          return null;
-        case 1:
-          return processorNeed+' '+this.processorPart.name+'а';
-        default:
-          return processorNeed+' '+this.processorPart.name+'ов';
-      }
+      return (processorNeed===0)
+        ?null:processorNeed + wordForm([' процессора', ' процессоров', ''], processorNeed);
     },
 
     soulNeedMessage(){
       let soulNeed = this.soulPart.installed.filter((i)=>{return i===false}).length;
-      switch (soulNeed) {
-        case 0:
-          return null;
-        case 1:
-          return soulNeed+' '+'души';
-        default:
-          return soulNeed+' '+'душ';
-      }
+      return (soulNeed===0)
+        ?null:soulNeed + wordForm([' души', ' душ', ''], soulNeed);
     },
 
     coinsNeedMessage(){
