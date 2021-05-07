@@ -1,70 +1,58 @@
 <template lang="pug">
-  .factory-section__radio-block
-          .radio.factory-section__radio
-            h3.heading_xs.radio__title.
-             Тип биоробота            
-            .radio__item
-                label.radio__label
-                    input.radio__input(v-model='currentType'
-                                      @change='setRoboType(currentType)'                                       
-                                       type="radio" checked 
-                                       name= 'type' 
-                                       value= 'Front' )
-                    span.radio__fake-radio
-                    span.radio__name.radio__name_1.paragraph_xs= 'Front'
-                label.radio__label
-                    input.radio__input(v-model='currentType'                                      
-                                      @change='setRoboType(currentType)'
-                                      type="radio" 
-                                      name= 'type' 
-                                      value= 'Design')
-                    span.radio__fake-radio
-                    span.radio__name.radio__name_2.paragraph_xs= 'Design'
-
-          .radio.factory-section__radio
-            h3.heading_xs.radio__title= 'Стаблизатор'
-            
-            .radio__item
-                label.radio__label
-                    input.radio__input(v-model='currentGender'                                      
-                                      @change='setRoboGender(currentGender)'
-                                      type="radio" checked 
-                                      name= 'gender' 
-                                      value= 'Male' )
-                    span.radio__fake-radio
-                    span.radio__name.radio__name_1.paragraph_xs= 'Male'
-                label.radio__label
-                    input.radio__input(v-model='currentGender'                                      
-                                      @change='setRoboGender(currentGender)'
-                                      type="radio" 
-                                      name= 'gender' 
-                                      value= 'Female')
-                    span.radio__fake-radio
-                    span.radio__name.radio__name_2.paragraph_xs= 'Female'
+.factory-section__radio-block
+  .radio.factory-section__radio
+    h3.heading_xs.radio__title.
+      Тип биоробота            
+    .radio__item
+      radioBtn(
+        v-for='roboType in roboTypes' 
+        :key='roboType.id'       
+        :isChecked='roboType.isChecked'         
+        radioName='type'
+        :radioValue='roboType.type'               
+        @setRadioValue='setRoboType'
+        )
+  .radio.factory-section__radio
+    h3.heading_xs.radio__title. 
+      Стаблизатор
+    .radio__item
+      radioBtn(
+        v-for='roboGender in roboGenders' 
+        :key='roboGender.id'       
+        :isChecked='roboGender.isChecked'         
+        radioName='gender'
+        :radioValue='roboGender.gender'               
+        @setRadioValue='setRoboGender'
+        )
 </template>
 
 <script>
-import {mapGetters} from 'vuex';
+import radioBtn from '../UI/radioBtn.vue';
 export default {
-  data(){
-    return{
-      currentType: 'Front',
-      currentGender: 'Male'
-    }
+  components:{
+    radioBtn,
   },
-  computed:{
-    ...mapGetters(['roboType', 'roboGender','selectedRobot']) 
+  data() {
+    return {
+      roboTypes:[
+        {type:'Front', isChecked: true, id:1},
+        {type:'Design', isChecked: false, id:2}
+      ],
+      roboGenders:[
+        {gender:'Male', isChecked:true, id:1},
+        {gender:'Female', isChecked:false, id:2},
+      ],      
+    };
+  },  
+  methods: {
+    setRoboGender(gender) {
+      this.$store.commit("setRoboGender", gender);
+    },
+    setRoboType(type) {
+      this.$store.commit("setRoboType", type);
+    },
   },
-  methods:{   
-    setRoboGender(gender){
-      this.$store.commit('setRoboGender', gender)
-    },
-    setRoboType(type){
-      this.$store.commit('setRoboType', type)
-    },
-
-  }
-}
+};
 </script>
 
 <style lang="scss" scoped>
