@@ -1,5 +1,5 @@
 <template lang="pug">
-  p.paragraph_xs.factory-section__message.
+  p.paragraph_xs.
     {{factoryMessage}}
 </template>
 
@@ -9,61 +9,43 @@ import { mapGetters } from 'vuex'
 export default {
   data(){return {}},
   computed:{
-    ...mapGetters(['readyToBuildStatus', 'biomechPart','processorPart','soulPart','ballance']),
-  
-    factoryMessage(){
-      let messageArr = [];
-      const basicMessage = 'Для производства биоробота вам не хватает ';
-      (this.biomechNeedMessage===null)
-        ?null:messageArr.push(this.biomechNeedMessage);
-      (this.processorNeedMessage===null)
-        ?null:messageArr.push(this.processorNeedMessage);
-      (this.soulNeedMessage===null)
-        ?null:messageArr.push(this.soulNeedMessage);
-      (this.coinsNeedMessage===null)
-        ?null:messageArr.push(this.coinsNeedMessage);
-      switch (messageArr.length) {
+    ...mapGetters(['readyToBuildStatus', 'parts', 'ballance']),
+    factoryMessage(){  
+      const basicMessage = 'Для производства биоробота вам не хватает ';  
+      switch (this.messageArr.length) {
       case 0:
         return 'Можно произвести биоробота';
       case 1:
-        return basicMessage + messageArr[0];
+        return basicMessage + this.messageArr[0];
       case 2:
-        return `${basicMessage + messageArr[0]} и ${messageArr[1]}`;
+        return `${basicMessage + this.messageArr[0]} и ${this.messageArr[1]}`;
       case 3:
-        return `${basicMessage + messageArr[0]}, ${messageArr[1]} и ${messageArr[2]}`;
+        return `${basicMessage + this.messageArr[0]}, ${this.messageArr[1]} и ${this.messageArr[2]}`;
       case 4:
-        return `${basicMessage + messageArr[0]}, ${messageArr[1]}, ${messageArr[2]} и ${messageArr[3]}`;
+        return `${basicMessage + this.messageArr[0]}, ${this.messageArr[1]}, ${this.messageArr[2]} и ${this.messageArr[3]}`;
       }      
     },
-    
-    biomechNeedMessage(){
-      let biomechNeed = this.biomechPart.installed.filter((i)=>{return i===false}).length;
-      return (biomechNeed===0)
-        ?null:biomechNeed + wordForm([' биомеханизма', ' биомеханизмов', ''], biomechNeed);       
-    },
-
-    processorNeedMessage(){
-      let processorNeed = this.processorPart.installed.filter((i)=>{return i===false}).length;
-      return (processorNeed===0)
-        ?null:processorNeed + wordForm([' процессора', ' процессоров', ''], processorNeed);
-    },
-
-    soulNeedMessage(){
-      let soulNeed = this.soulPart.installed.filter((i)=>{return i===false}).length;
-      return (soulNeed===0)
-        ?null:soulNeed + wordForm([' души', ' душ', ''], soulNeed);
-    },
-
-    coinsNeedMessage(){
+    messageArr(){
+      let array = [];
+      for(let i in this.parts){
+        let part = this.parts[i];
+        let partNeed = part.installed.filter((j)=>{return j===false}).length;
+        if (part.type === 'soul'){
+          (partNeed === 0)
+            ?null:array.push(partNeed+wordForm([' души',' душ',''], partNeed))
+        }else{
+          (partNeed === 0)
+            ?null:array.push(partNeed+wordForm([` ${part.name + 'а'}`, ` ${part.name + 'ов'}`, ''], partNeed))
+        }    
+      }
       let coinsNeed = 10 - this.ballance;
-      if(coinsNeed<=0){
-        return null;
-      }else if(coinsNeed === 1){
-        return '1 монеты'
-      }else return 'монет'        
+      (coinsNeed<=0)
+        ?null:array.push(coinsNeed+wordForm([' монеты', ' монет', ' монет'], coinsNeed));
+      return array
     }
   }
 }
+
 </script>
 
 <style lang="scss" scoped>

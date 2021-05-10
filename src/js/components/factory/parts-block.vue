@@ -1,37 +1,34 @@
-
 <template lang="pug">
-
 .factory-section__parts-block 
-  
   svgSprite 
-  partsBtn(:targetPart = 'biomechPart')
-  partsBtn(:targetPart = 'processorPart')
-  partsBtn(:targetPart = 'soulPart' )
-  
-
- 
+  partsBtn(:targetPart="biomechPart")
+  partsBtn(:targetPart="processorPart")
+  partsBtn(:targetPart="soulPart") 
 </template>
 
 <script>
 import svgSprite from "./svg-sprites.vue";
-import partsBtn from "./parts-btn.vue";
-import {mapGetters} from 'vuex';
+import partsBtn from "../UI/partsBtn.vue";
+import { mapGetters } from "vuex";
 export default {
   components: {
     svgSprite,
     partsBtn,
   },
-  data(){
-    return{       
-    }
+  data() {
+    return {};
   },
-  computed:{
-    ...mapGetters(['biomechPart','processorPart','soulPart','parts','ballance']),    
-  }, 
-  methods:{   
-    
-  }   
-}
+  computed: {
+    ...mapGetters([
+      "biomechPart",
+      "processorPart",
+      "soulPart",
+      "parts",
+      "ballance",
+    ]),
+  },
+  methods: {},
+};
 </script>
 
 <style lang="scss" scoped>
