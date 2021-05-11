@@ -69,7 +69,7 @@ export default {
     },
   },
 
-  mutations: {    
+  mutations: {
     addPart(state, type) {
       const targetPart = state.allParts.find((part) => part.type === type);
       targetPart.storageValue++;
@@ -91,11 +91,8 @@ export default {
       }
     },
     resetParts(state) {
-      state.allParts.forEach((part) => { part.factoryValue = 0; });
-      for (const i in state.allParts) {
-        const part = state.allParts[i];
-        part.installed = new Array(part.needToBuild).fill(false);
-      }
+      state.allParts.map((part) => { part.factoryValue = 0; });
+      state.allParts.forEach((part) => { part.installed = new Array(part.needToBuild).fill(false) });
     },
     showFactoryPopup(state) {
       state.isFactoryPopupShow = true;

@@ -14,7 +14,7 @@
         )
   .radio.factory-section__radio
     h3.heading_xs.radio__title. 
-      Стаблизатор
+      Стабилизатор
     .radio__item
       radioBtn(
         v-for='roboGender in roboGenders' 
