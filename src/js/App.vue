@@ -8,27 +8,20 @@
         app__shop
         app__storage
         app__factory
-    popup(:isShow = 'isWalletPopupShow' 
-          :closeBtnHandler='closeWalletPopup'
-          ) 
-      .popup__img-block
-        img(src="src/img/coin.png")
-      .popup__text-block
-        h3.popup__title.heading_md.
-          Количество монет ограничено
-        p.popup__paragraph.heading_sm.
-          Вы не можете нацыганить более 100 монет biorobo
-    popup(:isShow = 'isFactoryPopupShow' 
-          :closeBtnHandler='closeFactoryPopup'
-          ) 
-      .popup__text-block
-        h3.popup__title.heading_md.
-          Биоробот произведен
-        p.popup__paragraph.heading_sm.
-          Поздравляем!
-          Вы произвели биоробота
-
-
+    popup(
+      type="wallet"
+      title="Количество монет ограничено"
+      paragraph="Вы не можете нацыганить более 100 монет biorobo"
+      :isShow = 'isWalletPopupShow' 
+      :closeBtnHandler='closeWalletPopup'
+      )       
+    popup(
+      type="factory"
+      title="Биоробот произведен"
+      paragraph="Поздравляем! Вы произвели биоробота"
+      :isShow = 'isFactoryPopupShow' 
+      :closeBtnHandler='closeFactoryPopup'
+      ) 
 </template>
 
 <script>
@@ -38,7 +31,7 @@ import app__wallet from './components/wallet.vue';
 import app__shop from './components/shop.vue';
 import app__storage from './components/storage.vue';
 import app__factory from './components/factory/factory.vue';
-import popup from './components/popup.vue';
+import popup from './components/UI/popup.vue';
 import { mapGetters } from 'vuex';
 export default {  
   components:{

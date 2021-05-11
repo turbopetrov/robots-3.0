@@ -2,13 +2,22 @@
    .popup(v-if='isShow')
     .popup__body
       .popup__content
-        slot
+        .popup__img-block
+          img(
+            v-if='type==="wallet"'
+            src="src/img/coin.png"
+            )
+        .popup__text-block
+          h3.popup__title.heading_md.
+            {{title}}
+          p.popup__paragraph.heading_sm.
+            {{paragraph}}
         .popup__close-btn(@click='closeBtnHandler')
 </template>
 
 <script>
 export default {
-  props:['isShow', 'closeBtnHandler'],
+  props:['type','title','paragraph','isShow', 'closeBtnHandler'],
   data(){
     return {
       
