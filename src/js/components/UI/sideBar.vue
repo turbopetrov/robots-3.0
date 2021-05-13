@@ -19,9 +19,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-  @import 'src/scss/ui-kit/colors.scss';
-  @import 'src/scss/ui-kit/text/paragraph.scss';
+<style lang="scss" scoped>  
   .side-bar {
     position: absolute;
     top: 0;

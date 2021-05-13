@@ -15,9 +15,7 @@ import { mapGetters } from "vuex";
 export default {
   props: ["type", "targetPart", "partHandler"],
   data() {
-    return {
-      
-    };
+    return {};
   },
   computed: {
     ...mapGetters([
@@ -39,16 +37,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "src/scss/mixins/mixins.scss";
-@import "src/scss/ui-kit/colors.scss";
-@import "../../../scss/ui-kit/parts.scss";
 .parts {
   width: 48px;
   height: 48px;
   border: 2px solid $grey-color;
   border-radius: 4px;
   outline: none;
-
   cursor: pointer;
   &__img {
     width: 100%;

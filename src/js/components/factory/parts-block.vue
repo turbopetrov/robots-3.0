@@ -32,9 +32,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "src/scss/mixins/mixins.scss";
-@import "src/scss/ui-kit/colors.scss";
-@import "../../../scss/ui-kit/parts.scss";
 .factory-section__parts-block {
   display: flex;
   flex-wrap: wrap;

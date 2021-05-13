@@ -2,10 +2,10 @@
 label.checkbox__label
   input.checkbox__input(
     type="checkbox",
-    v-model='value',
-    :true-value='trueValue',
-    :false-value='falseValue'
-    @change='onChange'
+    v-model="value",
+    :true-value="trueValue",
+    :false-value="falseValue",
+    @change="onChange"
   )
   span.checkbox__fake-checkbox
   span.checkbox__text.
@@ -14,30 +14,28 @@ label.checkbox__label
 
 <script>
 export default {
-  props:{
+  props: {
     label: String,
-    trueValue:Number,
-    falseValue:Number,
+    trueValue: Number,
+    falseValue: Number,
   },
   data() {
     return {
-      value:null
+      value: null,
     };
   },
-  methods:{
-    onChange(){
-      this.$emit('getValue', this.value)
-    }
-  }
+  methods: {
+    onChange() {
+      this.$emit("getValue", this.value);
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-@import '../../../scss/ui-kit/colors.scss';
 .checkbox__label {
   display: flex;
 }
-
 .checkbox__text {
   color: $white-color;
   font: 16px/100%;
@@ -45,7 +43,6 @@ export default {
   font-family: Montserrat;
   font-style: normal;
 }
-
 .checkbox__fake-checkbox {
   position: relative;
   display: inline-block;
@@ -61,14 +58,13 @@ export default {
 .checkbox__input {
   display: none;
 }
-
 .checkbox__fake-checkbox::before {
   position: absolute;
   top: 50%;
   left: 50%;
   width: 14px;
   height: 12px;
-  background-image: url('../../../img/check.svg');
+  background-image: url("../../../img/check.svg");
   transform: translate(-50%, -50%);
   opacity: 0;
   transition: 0.1s;
@@ -77,5 +73,4 @@ export default {
 .checkbox__input:checked ~ .checkbox__fake-checkbox::before {
   opacity: 1;
 }
-
 </style>

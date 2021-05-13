@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import wordForm from '../../utils/functions.js';
+import wordForm from '../../utils/wordForm.js';
 import { mapGetters } from 'vuex'
 export default {
   data(){return {}},
@@ -35,7 +35,7 @@ export default {
             ?null:array.push(partNeed+wordForm([' души',' душ',''], partNeed))
         }else{
           (partNeed === 0)
-            ?null:array.push(partNeed+wordForm([` ${part.name + 'а'}`, ` ${part.name + 'ов'}`, ''], partNeed))
+            ?null:array.push(partNeed+wordForm([` ${part.name.toLowerCase() + 'а'}`, ` ${part.name.toLowerCase() + 'ов'}`, ''], partNeed))
         }    
       }
       let coinsNeed = 10 - this.ballance;

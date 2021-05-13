@@ -3,7 +3,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {VueLoaderPlugin} = require('vue-loader');
+const { VueLoaderPlugin } = require('vue-loader');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
@@ -28,8 +28,8 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        options:{
-          loader:{
+        options: {
+          loader: {
             scss: 'vue-style-loader!css-loader!sass-loader'
           }
         }
@@ -37,13 +37,13 @@ module.exports = {
       {
         test: /\.pug$/,
         oneOf: [
-           {
-              resourceQuery: /^\?vue/,
-              use: ['pug-plain-loader']
-           },
-           {
-              use: ['raw-loader', 'pug-plain-loader']
-           }
+          {
+            resourceQuery: /^\?vue/,
+            use: ['pug-plain-loader']
+          },
+          {
+            use: ['raw-loader', 'pug-plain-loader']
+          }
         ]
       },
       {
@@ -60,6 +60,18 @@ module.exports = {
           {
             loader: 'sass-loader',
           },
+          {
+            loader: 'style-resources-loader',
+            options: {
+              patterns: [
+                './scss/mixins/mixins.scss',
+                './scss/ui-kit/colors.scss',
+                './scss/ui-kit/text/heading.scss',
+                './scss/ui-kit/text/paragraph.scss',
+                
+              ]
+            }
+          }
         ],
       },
       {

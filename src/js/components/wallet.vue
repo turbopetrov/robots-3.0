@@ -26,7 +26,7 @@ section.wallet-section
 
 <script>
 import checkbox from "./UI/checkbox.vue";
-import wordForm from "../utils/functions.js";
+import wordForm from "../utils/wordForm.js";
 import sideBar from "./UI/sideBar.vue";
 import { mapGetters } from "vuex";
 export default {
@@ -57,7 +57,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../scss/ui-kit/colors.scss";
 .wallet-section {
   position: relative;
   display: flex;
@@ -82,9 +81,6 @@ export default {
 .coins-block__coins-quantity {
   margin-top: 43px;
 }
-
-//----------------- Action Block---------------//
-
 .wallet-section__action-block {
   display: flex;
   margin-top: 43px;
