@@ -11,9 +11,10 @@ section.factory-section
       robotImg
     .factory-section__btn-block
       btn(
-        btnType="factory"
-        :btnDisabled='!readyToBuildStatus'
-        @action='buildRobot').
+        btnType="factory",
+        :btnDisabled="!readyToBuildStatus",
+        @action="buildRobot"
+      ).
         Произвести за 10 монет
     .factory-section__message-block
       factoryMessage
@@ -56,8 +57,8 @@ export default {
       this.$store.commit("removeCoins", 10);
       this.$store.commit("showFactoryPopup");
     },
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>

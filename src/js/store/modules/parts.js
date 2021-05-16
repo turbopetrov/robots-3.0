@@ -59,11 +59,9 @@ export default {
       for (const i in state.allParts) {
         if (rootState.wallet.currentBallance < 10) {
           return false;
-          break;
         }
         if (state.allParts[i].installed.includes(false)) {
           return false;
-          break;
         }
       } return true;
     },
@@ -92,7 +90,7 @@ export default {
     },
     resetParts(state) {
       state.allParts.map((part) => { part.factoryValue = 0; });
-      state.allParts.forEach((part) => { part.installed = new Array(part.needToBuild).fill(false) });
+      state.allParts.forEach((part) => { part.installed = new Array(part.needToBuild).fill(false); });
     },
     showFactoryPopup(state) {
       state.isFactoryPopupShow = true;

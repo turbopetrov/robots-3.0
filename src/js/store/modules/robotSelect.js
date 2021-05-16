@@ -5,7 +5,7 @@ export default {
     roboStatus: '_disable',
   },
 
-  getters: {   
+  getters: {
     roboStatus(state) {
       return state.roboStatus;
     },
@@ -16,13 +16,13 @@ export default {
 
   mutations: {
     setRoboType(state, type) {
-      return state.roboType = type;
+      state.roboType = type;
     },
     setRoboGender(state, gender) {
-      return state.roboGender = gender;
+      state.roboGender = gender;
     },
     setRoboStatus(state, status) {
-      return state.roboStatus = status;
+      state.roboStatus = status;
     },
   },
 };
