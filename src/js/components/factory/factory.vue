@@ -10,7 +10,11 @@ section.factory-section
     .factory-section__img-block
       robotImg
     .factory-section__btn-block
-      buildBtn(:status="readyToBuildStatus")
+      btn(
+        btnType="factory"
+        :btnDisabled='!readyToBuildStatus'
+        @action='buildRobot').
+        Произвести за 10 монет
     .factory-section__message-block
       factoryMessage
 </template>
@@ -19,7 +23,7 @@ section.factory-section
 import sideBar from "../UI/sideBar.vue";
 import radioBlock from "./radio-block.vue";
 import partsBlock from "./parts-block.vue";
-import buildBtn from "./buildBtn.vue";
+import btn from "../UI/button.vue";
 import robotImg from "./robotImg.vue";
 import factoryMessage from "./factory-message.vue";
 import { mapGetters } from "vuex";
@@ -27,7 +31,7 @@ export default {
   components: {
     radioBlock,
     partsBlock,
-    buildBtn,
+    btn,
     robotImg,
     factoryMessage,
     sideBar,
@@ -45,7 +49,15 @@ export default {
       return "src/img/" + this.selectedRobot + "_active.png";
     },
   },
-};
+  methods: {
+    buildRobot() {
+      this.$store.commit("resetParts");
+      this.$store.commit("setRoboStatus", "_ready");
+      this.$store.commit("removeCoins", 10);
+      this.$store.commit("showFactoryPopup");
+    },
+  }
+}
 </script>
 
 <style lang="scss" scoped>

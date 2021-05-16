@@ -1,4 +1,6 @@
 .btn_factory_normal {
+  width: 236px;
+  height: 48px;
   color: $white-color;
   background-color: transparent;
   border-color: $orange-color;
@@ -10,6 +12,8 @@
   }
 }
 .btn_factory_disable {
+  width: 236px;
+  height: 48px;
   color: $light-grey-color;
   background: transparent;
   border-color: $grey-color;

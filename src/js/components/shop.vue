@@ -43,7 +43,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../scss/ui-kit/buttons/btn_type1.scss";
+@import "../../scss/ui-kit/buttons/btn_shop.scss";
 .shop-section {
   position: relative;
   display: flex;

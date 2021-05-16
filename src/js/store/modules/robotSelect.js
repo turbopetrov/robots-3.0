@@ -5,13 +5,7 @@ export default {
     roboStatus: '_disable',
   },
 
-  getters: {
-    roboType(state) {
-      return state.roboType;
-    },
-    roboGender(state) {
-      return state.roboGender;
-    },
+  getters: {   
     roboStatus(state) {
       return state.roboStatus;
     },

@@ -7,16 +7,16 @@
     Стоимость {{(cardType==='shop')?card.buyCost:card.sellCost}} монет
   h3.card__heading_storage.heading_sm(v-if="cardType === 'storage'").
     {{card.storageValue}} шт
-  button.card__btn(
-    :disabled="btnDisabled",
-    :class="btnClass",
-    @click="btnHandler"
-  ).
-    {{btnTitle}}    
+  btn(
+    :btnType='cardType'
+    :btnDisabled='btnDisabled'
+    @action='btnHandler'
+    ).card__btn.
+    {{btnTitle}}   
 </template>
 
 <script>
-import mainBtn from "./button.vue";
+import btn from "./button.vue";
 import { mapGetters } from "vuex";
 export default {
   props: {
@@ -26,7 +26,7 @@ export default {
     btnTitle: String,
   },
   components: {
-    mainBtn,
+    btn,
   },
   data() {
     return {};
